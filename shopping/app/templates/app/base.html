@@ -39,9 +39,9 @@
              </a>
              <ul class="dropdown-menu" aria-labelledby="electronicsDropdown">
                <li><a class="dropdown-item" href="{% url 'mobile' %}">Mobile</a></li>
-               <li><a class="dropdown-item" href="#">Laptop</a></li>
-               <li><a class="dropdown-item" href="#">Watch</a></li>
-               <li><a class="dropdown-item" href="#">Electronics Item</a></li>
+               <li><a class="dropdown-item" href="{% url 'laptop' %}">Laptop</a></li>
+               <li><a class="dropdown-item" href="{% url 'watch' %}">Watch</a></li>
+               <li><a class="dropdown-item" href="{% url 'electronicitem' %}">Electronics Item</a></li>
              </ul>
            </li>
            <li class="nav-item dropdown">
@@ -49,17 +49,14 @@
                Fashion
              </a>
              <ul class="dropdown-menu" aria-labelledby="fashionDropdown">
-               <li><a class="dropdown-item" href="#">Top Wear</a></li>
-               <li><a class="dropdown-item" href="#">Bottom Wear</a></li>
-               <li><a class="dropdown-item" href="#">Bags</a></li>
-               <li><a class="dropdown-item" href="#">Bueaty Product</a></li>
+               <li><a class="dropdown-item" href="{% url 'topwear' %}">Top Wear</a></li>
+               <li><a class="dropdown-item" href="{% url 'bottomwear' %}">Bottom Wear</a></li>
+               <li><a class="dropdown-item" href="{% url 'bags' %}">Bags</a></li>
+               <li><a class="dropdown-item" href="{% url 'bueatyproduct' %}">Bueaty Product</a></li>
              </ul>
            </li>
          </ul>
-         <form class="d-flex">
-           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-           <button class="btn btn-info" type="submit">S</button>
-         </form>
+
          <div>
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
            <li class="nav-item dropdown mx-2">
@@ -84,6 +81,10 @@
             </li>
           </ul>
          </div>
+         <form class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-info" type="submit">S</button>
+        </form>
        </div>
      </div>
     </nav>
