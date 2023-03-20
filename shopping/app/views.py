@@ -1,7 +1,14 @@
-from django.shortcuts import render
+from django.http import JsonResponse
+from django.shortcuts import redirect, render
 from django.views import View
-from . models import *
-
+from .models import Customer, Product, Cart, OrderPlaced
+from .forms import CustomerRegistrationForm, CustomerProfileForm
+from django.contrib import messages
+from django.db.models import Q
+from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from django.contrib.auth.models import User
 
 # def product_detail(request):
 #  return render(request, 'app/productdetail.html')
@@ -21,16 +28,7 @@ def address(request):
 def orders(request):
  return render(request, 'app/orders.html')
 
-def change_password(request):
- return render(request, 'app/changepassword.html')
 
-
-
-def login(request):
- return render(request, 'app/login.html')
-
-def customerregistration(request):
- return render(request, 'app/customerregistration.html')
 
 def checkout(request):
  return render(request, 'app/checkout.html')
@@ -126,7 +124,7 @@ def bueatyproduct(request, data=None):
 def electronicitem(request, data=None):
     if data == None:
         electronicitem = Product.objects.filter(category='ELE')
-    elif data=='samsung' or data== 'boat':
+    elif data=='samsung' or data== 'Boat':
         electronicitem = Product.objects.filter(category='ELE').filter(brand=data)
     elif data == 'below':
         electronicitem = Product.objects.filter(category='ELE').filter(discounted_price__lt=25000)
@@ -156,3 +154,20 @@ def bags(request, data=None):
     elif data == 'above':
         bags = Product.objects.filter(category='B').filter(discounted_price__gt=5000)
     return render(request, 'app/bags.html',{'bags':bags})
+
+
+
+
+class CustomerRegistrationView(View):
+    def get(self, request):
+        form = CustomerRegistrationForm()
+        return render(request, 'app\customerregistration.html', {'form ': form})
+
+    def post(self, request):
+        form = CustomerRegistrationForm(request.POST)
+        if form.is_valid():
+            messages.success(
+                request, "congratulations ! Registered Successfully")
+            form.save()
+        return render(request, 'app\customerregistration.html', {'form': form})
+    
