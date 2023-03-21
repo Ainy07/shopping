@@ -19,22 +19,22 @@
     <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
 
 
-    <title>SNAP BUY | {% block title %} {% endblock title %} </title>
+    <title>amazon | {% block title %} {% endblock title %} </title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
      <div class="container">
-       <a class="navbar-brand" href="/">SNAP BUY</a>
+       <a class="navbar-brand text-dark" href="/">amazon</a>
        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon"></span>
        </button>
        <div class="collapse navbar-collapse" id="navbarSupportedContent">
          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
            <li class="nav-item">
-             <a class="nav-link active" aria-current="page" href="/">Home</a>
+             <a class="nav-link active  text-dark" aria-current="page" href="/">Home</a>
            </li>
            <li class="nav-item dropdown">
-             <a class="nav-link dropdown-toggle text-white" href="#" id="electronicsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             <a class="nav-link dropdown-toggle text-dark" href="#" id="electronicsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                Electronics
              </a>
              <ul class="dropdown-menu" aria-labelledby="electronicsDropdown">
@@ -45,25 +45,24 @@
              </ul>
            </li>
            <li class="nav-item dropdown">
-             <a class="nav-link dropdown-toggle text-white" href="#" id="fashionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             <a class="nav-link dropdown-toggle text-dark" href="#" id="fashionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                Fashion
              </a>
              <ul class="dropdown-menu" aria-labelledby="fashionDropdown">
                <li><a class="dropdown-item" href="{% url 'topwear' %}">Top Wear</a></li>
                <li><a class="dropdown-item" href="{% url 'bottomwear' %}">Bottom Wear</a></li>
                <li><a class="dropdown-item" href="{% url 'bags' %}">Bags</a></li>
-               <li><a class="dropdown-item" href="{% url 'bueatyproduct' %}">Bueaty Product</a></li>
+               <li><a class="dropdown-item" href="{% url 'bueatyproduct' %}">Bueaty Product</a></li>               
              </ul>
            </li>
          </ul>
-
+         
          <div>
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            {% if request.user.is_authenticated %}
-           
+            {% if request.user.is_authenticated%}
            <li class="nav-item dropdown mx-2">
-              <a class="nav-link dropdown-toggle text-white" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Sonam
+              <a class="nav-link dropdown-toggle text-dark" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{request.user.username|capfirst}}
               </a>
               <ul class="dropdown-menu" aria-labelledby="profileDropdown">
                 <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
@@ -73,22 +72,22 @@
               </ul>
             </li>
             <li class="nav-item mx-2">
-             <a href="{% url 'add-to-cart' %}" class="nav-link text-white"><span class="badge bg-info">4</span> Cart </a>
+             <a href="{% url 'showcart' %}" class="nav-link text-dark"><span class="badge bg-info">{{item.quantity}} </span> Cart </a>
             </li>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-info" type="submit">S</button>
+            </form>
             {% else %}
             <li class="nav-item mx-2">
-             <a href="{% url 'login' %}" class="nav-link text-white">Login</a>
+             <a href="{% url 'login' %}" class="nav-link text-dark">Login</a>
             </li>
             <li class="nav-item mx-2">
-             <a href="{% url 'customerregistration' %}" class="nav-link text-white">Registration</a>
+             <a href="{% url 'customerregistration' %}" class="nav-link text-dark">Registration</a>
             </li>
-             {% endif %}
+            {% endif %}
           </ul>
          </div>
-         <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-info" type="submit">S</button>
-        </form>
        </div>
      </div>
     </nav>
@@ -97,8 +96,8 @@
     {% block main-content %} {% endblock main-content %}
 
     <!-- Start Footer -->
-    <footer class="container-fluid bg-info text-center p-2 mt-5">
-        <small class="text-white"> &copy; 2023 || Designed By Ainy Gupta || </small>
+    <footer class="container-fluid bg-secondary text-center p-2 mt-5">
+        <small class="text-dark">Copyright &copy; 2021 || Designed By Ainy|| </small>
         <img src="{% static 'app/images/payment.png' %}" alt="" srcset="" class="img-fluid" height="2px">
     </footer> <!-- End Footer -->
 

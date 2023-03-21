@@ -59,6 +59,11 @@ class Cart(models.Model):
     quantity = models.PositiveIntegerField(default =1)
         
     
+@property
+def total_cost(self):
+    return self.quantity * self.product.discounted_price  
+
+    
 STAUS_CHOICES = (
     ('Accepted', 'Accepted'),
     ('packed','packed'),
@@ -75,3 +80,7 @@ class OrderPlaced(models.Model):
     ordered_date = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length =50, choices = STAUS_CHOICES,default='Pending')
     
+    
+@property
+def total_cost(self):
+    return self.quantity * self.product.discounted_price     
