@@ -13,7 +13,7 @@
           <h5>Product: {{item.product.title}}</h5>
           <p>Quantity: {{item.quantity}}</p>
           <div class="col-sm-3 text-center align-self-center"  class=""><img src="{{item.product.product_image.url}}" alt="" srcset="" class="img-fluid img-thumbnail shadow-sm" height="150" width="150"> </div>
-          <p class="fw-bold">Price: {{item.total_cost}} </p>
+          <p class="fw-bold">Price: {{item.product.discounted_price}} </p>
         </div>
       </div>
       {% endfor %}
